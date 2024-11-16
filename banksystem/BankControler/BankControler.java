@@ -47,7 +47,7 @@ public ApiResponse deleteCustomer(@PathVariable int index) {
     }
 
 
-    @PutMapping("/deposit/{index}")
+   @PutMapping("/deposit/{index}/{amount}")
     public ApiResponse costumerDeposit(@PathVariable int index,@RequestBody double amount) {
         if (index>=0&&index<customers.size()) {
             CustomersModel customer = customers.get(index);
@@ -57,7 +57,7 @@ public ApiResponse deleteCustomer(@PathVariable int index) {
         return new ApiResponse("Customer deposit failed");
     }
 
-    @PutMapping("/withdraw/{index}")
+    @PutMapping("/withdraw/{index}/{amount}")
     public ApiResponse costumerWithdrawal(@PathVariable int index,@RequestBody double amount) {
         if (index>=0&&index<customers.size()) {
             CustomersModel customer = customers.get(index);
