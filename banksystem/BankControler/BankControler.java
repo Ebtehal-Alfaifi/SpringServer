@@ -31,11 +31,14 @@ public class BankControler {
 
 
      //UPDATE CUSTUMER
-    @GetMapping("/update/{index}")
-    public ApiResponse updateCustomer(@PathVariable int index  ,@RequestBody CustomersModel customer) {
-        customers.set(index,  customer);
+  @PutMapping("/update/{index}")
+public ApiResponse updateCustomer(@PathVariable int index, @RequestBody CustomersModel customer) {
+    if (index >= 0 && index < customers.size()) {
+        customers.set(index, customer); // تحديث العميل في الموقع المحدد
         return new ApiResponse("Customer updated successfully");
     }
+    return new ApiResponse("Customer update failed: Index out of bounds");
+}
 
 
 
