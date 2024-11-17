@@ -51,7 +51,7 @@ public ApiResponse deleteCustomer(@PathVariable int index) {
 
 
    @PutMapping("/deposit/{index}/{amount}")
-    public ApiResponse costumerDeposit(@PathVariable int index,@RequestBody double amount) {
+    public ApiResponse costumerDeposit(@PathVariable int index,@RequestParam  double amount) {
         if (index>=0&&index<customers.size()) {
             CustomersModel customer = customers.get(index);
             customer.setBalance(customer.getBalance()+amount);
