@@ -61,9 +61,10 @@ public ApiResponse deleteCustomer(@PathVariable int index) {
     }
 
     @PutMapping("/withdraw/{index}/{amount}")
-    public ApiResponse costumerWithdrawal(@PathVariable int index,@RequestBody double amount) {
+    public ApiResponse costumerWithdrawal(@PathVariable int index,@RequestParam double amount) {
         if (index>=0&&index<customers.size()) {
             CustomersModel customer = customers.get(index);
+            if (customer.getBalance() >= amount)
             customer.setBalance(customer.getBalance()-amount);
             return new ApiResponse("Customer withdrawal successfully");
         }
